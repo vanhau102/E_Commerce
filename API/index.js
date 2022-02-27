@@ -5,20 +5,20 @@ const app = express();
 
 dotenv.config({ path: ".env" });
 
-async function DB() {
-    try {
-        await mongoose.connect('mongodb://localhost:27017/shop');
-        console.log('Connection to MongoDB is successfuly');
-    } catch (err) {
-        console.log('Error connecting to MongoDB', err);
-    }
+app.use(express.json());
+
+//Connect MongoDB 
+main().catch(err => console.log("Mongodb is connect fails", err));
+
+async function main() {
+    await mongoose.connect('mongodb://localhost:27017/shop');
+    console.log("Mongodb is connected");
 }
-DB();
 
+//Route
+const userRoute = require("./routes/user");
 
-app.get("/", (req, res) => {
-    res.status(200).json("Router is access!");
-})
+app.use("/api/users", userRoute);
 
 
 
