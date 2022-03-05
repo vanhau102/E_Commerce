@@ -16,8 +16,8 @@ async function main() {
 }
 
 //Route
-const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
+const userRoute = require("./routes/user");
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
