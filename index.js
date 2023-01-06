@@ -34,7 +34,7 @@ app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
 
-const post = 3000;
+const post = 5000;
 app.listen(post, () => {
     console.log(`Backend server is running http://localhost:${post}`);
 })
